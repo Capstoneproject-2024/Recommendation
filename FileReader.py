@@ -2,7 +2,7 @@ import csv
 import re
 import json
 import pandas as pd
-from SimMatcher.api_db_connection import *
+from api_db_connection import *
 from MySQLConnection import MySQLConnection, get_mysql_connection
 
 class Filereader:

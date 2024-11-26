@@ -1,0 +1,17 @@
+gensim==4.3.3
+keybert==0.8.5
+numpy==1.26.4
+fastapi~=0.115.4
+uvicorn
+sentencepiece
+protobuf
+pandas~=2.2.3
+konlpy~=0.6.0
+sympy~=1.13.3
+transformers~=4.45.2
+sentence-transformers~=3.2.0
+pydantic~=2.10.2
+python-dotenv
+mysql-connector-python
+mysql~=0.0.3
+requests~=2.32.3
