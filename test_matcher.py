@@ -1,4 +1,4 @@
-import asyncio
+import jpype
 from Extractor import *
 from SimilarityMatcher import *
 import traceback
@@ -20,6 +20,10 @@ books = reader.readBooks(book_path)
 #print(f'Review\n{reviews}\n')
 #print(f'Book\n{books}\n')
 """
+
+#jvm_path = jpype.getDefaultJVMPath()
+#print(f"JVM Path: {jvm_path}")
+#jpype.startJVM(jvm_path)
 
 
 print("Program Start")
