@@ -44,27 +44,25 @@ class Extractor:
 # Basic, Essential Functions ======================================================================================
 
     def extract_pos(self, text):
-        okt = Okt()
+        # okt = Okt()
+        #
+        # # 텍스트에서 특수문자 제거
+        # text = re.sub(r'[^ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9\s]', '', text)
+        #
+        # # Stopwords
+        # # stopwords = self.stopwords
+        #
+        # # 형태소 분석하여 명사, 형용사, 동사만 추출
+        # words = okt.pos(text, stem=True)
+        # keywords = [word for word, pos in words if pos in ['Noun', 'Verb', 'Adjective']]
+        #
+        # keywords = [word for word in keywords if len(word) > 1]  # 길이가 1인 단어 제거 (불필요한 조사일 가능성 높음)
+        #
+        # # 정해진 품사로만 이루어진 문장 생성
+        # refined_sentence = ' '.join(keywords)
+        # return refined_sentence
 
-        # 텍스트에서 특수문자 제거
-        text = re.sub(r'[^ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9\s]', '', text)
-
-        # Stopwords
-        # stopwords = self.stopwords
-
-        # 형태소 분석하여 명사, 형용사, 동사만 추출
-        words = okt.pos(text, stem=True)
-        keywords = [word for word, pos in words if pos in ['Noun', 'Verb', 'Adjective']]
-
-        keywords = [word for word in keywords if len(word) > 1]  # 길이가 1인 단어 제거 (불필요한 조사일 가능성 높음)
-
-        # 정해진 품사로만 이루어진 문장 생성
-        refined_sentence = ' '.join(keywords)
-        return refined_sentence
-
-        # word_counts = Counter(keywords)                # 키워드 빈도 계산
-        # top_keywords = word_counts.most_common(10)     # 빈도 높은 키워드 상위 10개 추출
-        # return top_keywords
+        return text
 
     def extract_keyword_string(self, review: str, show_similarity=True, pos=True) -> list:
         if pos:

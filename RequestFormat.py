@@ -9,12 +9,10 @@ class ExtractBody(BaseModel):
 class MatchBody(BaseModel):
     title: str
     review: str
-    vocab: str
+    recommendation_num: int
 
 class QuotBody(BaseModel):
-    #TODO - list name? or id? -> id should be a integer, name should be a string
-    title: str
-    quotation: str
-    book_list: List[str]
-    vocab: str
+    question_id: str
+    user_id: str
+    past_data_num: int
 
