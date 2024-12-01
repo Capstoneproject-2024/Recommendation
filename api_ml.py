@@ -45,6 +45,7 @@ async def match_basic(request: MatchBody):
     :param request:
     :return:
     """
+    #TODO review id 받아서 review 추출, 리턴 말고 reviewBookTable
     title = request.title
     review = request.review
     rec_num = request.recommendation_num

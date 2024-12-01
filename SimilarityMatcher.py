@@ -251,16 +251,17 @@ class Matcher:
 
         # 읽은 책이 1권 이하일 경우 선정 과정 생략
         book_keyword_flag = True
-        selected_book_keywords = book_keywords[0]        # Selected book keywords is a single '1' book in book_keywords
 
         # 책 0권 -> 에러로 판단
         if book_list is None or len(book_list) < 1:
-            print('Sim_Matcher: match-quot get null book list, return None')
-            return None
+            # print('Sim_Matcher: match-quot get null book list, return None')
+            only_quot = True
 
         # 책 선정 - 1 권
         if len(book_list) == 1:
+            selected_book_keywords = book_keywords[0]  # Selected book keywords is a single '1' book in book_keywords
             book_keyword_flag = False
+
 
         # 책 선정 - 여러 권인 경우
         if book_keyword_flag and not only_quot:
