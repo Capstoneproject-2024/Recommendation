@@ -47,24 +47,25 @@ async def match_basic(request: MatchBody):
     """
     title = request.title
     review = request.review
-    vocab = request.vocab
+    rec_num = request.recommendation_num
 
-    extracted_keywords = extractor.extract_keyword_string(review, show_similarity=False)
-    book_recommend = matcher.match_both(title, extracted_keywords, vocab=vocab)
+    extracted_keywords = extractor.extract_keyword_string(review, show_similarity=False, pos=True)
+    book_recommend = matcher.match_both(title, extracted_keywords, recommend_number=rec_num)
     #print(f"Title: {title}\nKeywords: {extracted_keywords}\nRecommend: {book_recommend}")
 
-    return {"recommend": book_recommend}
+    return {"result": book_recommend}
 
 @app.post("/match/quotation")
 async def match_quotation(request: QuotBody):
-    title = request.title
-    quot = request.quotation
-    book_list = request.book_list
-    vocab = request.vocab
+    user_id = request.user_id
+    question_id = request.question_id
+    past_data_num = request.past_data_num
 
-    quot_keyword = extractor.extract_keyword_string(quot,show_similarity=False)
+    quot_book_id, quotation = matcher.reader.get_book_id_and_quotation(question_id, user_id)
 
-    matcher.match_quot(title, quot_keyword, book_list, vocab, only_quot=False)
+    quot_keyword = extractor.extract_keyword_string(quotation, show_similarity=False)               # Keyword Extraction
+    book_recommend = matcher.match_quot(user_id, quot_book_id, quot_keyword, num=past_data_num, only_quot=False)     # Match
+    return {"result": book_recommend}
 
 @app.post("/extract")
 async def extract_keyword(request: ExtractBody):
@@ -73,7 +74,7 @@ async def extract_keyword(request: ExtractBody):
     #print(f"Received review: {review}")
     #print(f"Extracted Keywords: {keywords}")
 
-    return {"keywords": keywords}
+    return {"result": keywords}
 
 @app.get('/extractVocab')
 async def extract_vocab(keywords_string: str):
@@ -84,7 +85,7 @@ async def extract_vocab(keywords_string: str):
     keywords_string = [key.strip() for key in keywords_string.split(';')]
     group_vocab = matcher.match_group_vocab(keywords_string)
 
-    return{"groupVocabulary": group_vocab}
+    return{"result": group_vocab}
 
 
 # DB CHECK PART =====================================================================================================

@@ -88,7 +88,14 @@ class Filereader:
         bv = get_book_vocab(self.db)
         return bv
 
-    #def get_book_name_by_id(self):
+    def get_book_search_by_user(self, user_id: str, num: int = 5):
+        bl = get_book_search_by_user(self.db, user_id, num=num)
+        return bl
+
+    def get_book_id_and_quotation(self, question_id: str, user_id: str):
+        bi, qu = get_book_id_and_quotation(self.db, question_id, user_id)
+        return bi, qu
+
 
 # Others =======================================================================================================
     def exit(self):
