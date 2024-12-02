@@ -7,9 +7,8 @@ class ExtractBody(BaseModel):
     review: str
 
 class MatchBody(BaseModel):
-    title: str
-    review: str
-    recommendation_num: int
+    # title: str
+    review_id: str
 
 class QuotBody(BaseModel):
     question_id: str

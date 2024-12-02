@@ -96,6 +96,25 @@ class Filereader:
         bi, qu = get_book_id_and_quotation(self.db, question_id, user_id)
         return bi, qu
 
+    def get_review_by_id(self, review_id: str):
+        """
+        :param review_id:
+        :return: user_id: str, book_id: str, review_string: str
+        """
+        user_id, book_id, review_string = get_review_by_id(self.db, review_id)
+        return user_id, book_id, review_string
+
+    def update_book_review_keywords(self, book_id: str, review_keyword: list[str]):
+        result = update_review_keyword_table(self.db, book_id, review_keyword)
+        return result
+
+    def update_review_recommend_table(self, review_id, user_id, review_book_id, book_id_list):
+        result = update_review_recommend_table(self.db, review_id, user_id, review_book_id, book_id_list)
+        return result
+
+    def update_quot_recommend_table(self, question_id, user_id, book_id_list: list[str]):
+        result = update_quot_recommend_table(self.db, question_id, user_id, book_id_list)
+        return result
 
 # Others =======================================================================================================
     def exit(self):
