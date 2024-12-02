@@ -228,7 +228,7 @@ class Matcher:
         else:
             print("WARNING: Proportion should be in 0~100")
 
-    def match_quot(self, user_id: str, quot_book_id: str, quot_keywords: list, num: int = 5, vocab ='', only_quot=False):
+    def match_quot(self, user_id: str, quot_book_id: str, quot_keywords: list, num: int = 3, vocab ='', only_quot=False):
         """
         Have to test the extraction of quotation
         Use [top-3 book keyword | top-3 quot_keyword]
@@ -300,7 +300,7 @@ class Matcher:
         recommendation = self.match_both(quot_book_id, aggregated_keywords, vocab=vocab)
         return recommendation
 
-    def match_both(self, title_in: str, keywords_in: list, vocab: str = '', recommend_number=5):
+    def match_both(self, title_in: str, keywords_in: list, vocab: str = '', recommend_number=3):
         """
         :param vocab:
         :param title_in: title of book
