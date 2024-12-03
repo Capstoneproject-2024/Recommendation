@@ -26,7 +26,7 @@ books = reader.readBooks(book_path)
 
 jvm_path = jpype.getDefaultJVMPath()
 print(f"JVM Path: {jvm_path}")
-jpype.startJVM(jvm_path)
+# jpype.startJVM(jvm_path)
 
 
 print("Program Start")
