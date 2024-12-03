@@ -144,8 +144,8 @@ class Filereader:
 
 
 
-reader = Filereader()
-reader.add_book_title_csv()
+# reader = Filereader()
+# reader.add_book_title_csv()
 
 
 
