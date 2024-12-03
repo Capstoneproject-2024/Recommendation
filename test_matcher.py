@@ -1,4 +1,6 @@
 import jpype
+from numpy.lib.function_base import extract
+
 from Extractor import *
 from SimilarityMatcher import *
 import traceback
@@ -50,7 +52,9 @@ while True:
         "5: Print all keywords\n"
         "6: Extract and save as csv\n"
         "7: Extract, then apply POS, and save as csv\n"
-        "8: Test Matcher, input review"
+        "8: Test Matcher, input review\n"
+        "10: Quot Recommendation"
+
     )
     user_input = input("choose>>")
 
@@ -143,6 +147,15 @@ while True:
             review = input("Type ur review: >>")
             temp = extractor.extract_keyword_string(review)
             print(temp)
+
+        elif user_input == "10":
+            book_id = input("Type ur book id >>")
+            quot = input("Type ur quotation >>")
+            quot_keyword = extractor.extract_keyword_string(quot, pos=True)
+
+            reco = matcher.match_quot('21',book_id,quot_keyword,only_quot=True)
+
+
 
     except Exception as e:
         traceback.print_exc()

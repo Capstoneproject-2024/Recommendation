@@ -119,3 +119,33 @@ class Filereader:
 # Others =======================================================================================================
     def exit(self):
         self.db.close()
+
+    def add_book_title_csv(self, csv_path = "data/reco_result.csv"):
+        processed_data = []
+        columns = ['title', 'keyword1', 'keyword2', 'keyword3', 'keyword4', 'keyword5',
+                   'book1', 'book2', 'book3', 'book4', 'book5']
+        new_columns = ['bt1', 'bt2', 'bt3', 'bt4', 'bt5']
+
+        data = pd.read_csv(csv_path, encoding='utf-8-sig')
+        output_file_path = 'results/booktitle.csv'
+
+        book1 = data['book1'].tolist()
+        book2 = data['book2'].tolist()
+        book3 = data['book3'].tolist()
+        book4 = data['book4'].tolist()
+        book5 = data['book5'].tolist()
+
+        books = [book1, book2, book3, book4, book5]
+        for i, item_list in enumerate(books):
+            data[new_columns[i]] = data[f'book{i+1}'].apply(lambda x: get_book_title(self.db, x))
+
+
+        data.to_csv(output_file_path, encoding='utf-8-sig')
+
+
+
+reader = Filereader()
+reader.add_book_title_csv()
+
+
+

@@ -1,6 +1,6 @@
 import chardet
 
-csv_path = f'data/reco_results.csv'
+csv_path = f'data/reco_result.csv'
 new_csv_path = f'results/new_csv_saved.csv'
 
 with open(csv_path, 'rb') as f:
