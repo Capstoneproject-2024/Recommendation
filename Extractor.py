@@ -64,7 +64,7 @@ class Extractor:
 
         return text
 
-    def extract_keyword_string(self, review: str, show_similarity=True, pos=True) -> list:
+    def extract_keyword_string(self, review: str, show_similarity=False, pos=True) -> list:
         if pos:
             review = self.extract_pos(review)
 

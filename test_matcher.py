@@ -1,5 +1,6 @@
 import jpype
 from numpy.lib.function_base import extract
+from sympy import false
 
 from Extractor import *
 from SimilarityMatcher import *
@@ -151,7 +152,7 @@ while True:
         elif user_input == "10":
             book_id = input("Type ur book id >>")
             quot = input("Type ur quotation >>")
-            quot_keyword = extractor.extract_keyword_string(quot, pos=True)
+            quot_keyword = extractor.extract_keyword_string(quot, show_similarity=False, pos=True)
 
             reco = matcher.match_quot('21',book_id,quot_keyword,only_quot=True)
 

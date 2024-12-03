@@ -242,11 +242,14 @@ class Matcher:
         #                 ['제목4', ['책키41', '책키42', '책키43', '책키44', '책키45']],
         #                 ['제목5', ['책키51', '책키52', '책키53', '책키54', '책키55']]]
 
-        book_list = self.reader.get_book_search_by_user(user_id, num=num)
-        book_keywords = []
-        for book in book_list:
-            if book in self.keywords.keys():
-                book_keywords.append([book, self.keywords[book][Keytype.INFO.name]])
+        book_list = []
+
+        if not only_quot:
+            book_list = self.reader.get_book_search_by_user(user_id, num=num)
+            book_keywords = []
+            for book in book_list:
+                if book in self.keywords.keys():
+                    book_keywords.append([book, self.keywords[book][Keytype.INFO.name]])
 
 
         # 읽은 책이 1권 이하일 경우 선정 과정 생략
